@@ -1,3 +1,6 @@
+import { type AppColors } from "@/constants/theme";
+import { useTheme } from "@/context/ThemeContext";
+import { useTransactions } from "@/context/TransactionsContext";
 import { useMemo, useState } from "react";
 import {
   StyleSheet,
@@ -6,9 +9,6 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import { type AppColors } from "@/constants/theme";
-import { useTheme } from "@/context/ThemeContext";
-import { useTransactions } from "@/context/TransactionsContext";
 
 // types
 
@@ -89,7 +89,8 @@ function formatForDisplay(raw: string): string {
   const [intPart, decPart] = unsigned.split(".");
   const formattedInt =
     intPart === "" ? "0" : Number(intPart).toLocaleString("en-US");
-  const withDecimal = decPart !== undefined ? `${formattedInt}.${decPart}` : formattedInt;
+  const withDecimal =
+    decPart !== undefined ? `${formattedInt}.${decPart}` : formattedInt;
   return isNegative ? `-${withDecimal}` : withDecimal;
 }
 
@@ -138,7 +139,8 @@ export default function CalculatorPage() {
       setDisplay("0");
       return;
     }
-    const isSingleDigit = display.length <= 1 || (display.length === 2 && display.startsWith("-"));
+    const isSingleDigit =
+      display.length <= 1 || (display.length === 2 && display.startsWith("-"));
     setDisplay(isSingleDigit ? "0" : display.slice(0, -1));
   };
 
@@ -149,7 +151,9 @@ export default function CalculatorPage() {
     const value = parseFloat(display);
     if (isNaN(value)) return;
     const result =
-      operator && previousValue !== null ? (previousValue * value) / 100 : value / 100;
+      operator && previousValue !== null
+        ? (previousValue * value) / 100
+        : value / 100;
     setDisplay(cleanNumber(result));
   };
 
@@ -267,7 +271,9 @@ export default function CalculatorPage() {
   );
 }
 
-const createButtonColors = (COLORS: AppColors): Record<ButtonType, { bg: string; text: string }> => ({
+const createButtonColors = (
+  COLORS: AppColors,
+): Record<ButtonType, { bg: string; text: string }> => ({
   number: { bg: COLORS.surfaceContainerHigh, text: COLORS.onSurface },
   action: { bg: COLORS.surfaceContainerHigh, text: COLORS.onSurface },
   operator: { bg: COLORS.primary, text: COLORS.onPrimary },
@@ -332,6 +338,7 @@ const createStyles = (COLORS: AppColors) =>
       flex: 1,
       padding: 8,
       gap: 8,
+      backgroundColor: COLORS.surfaceContainer,
     },
     buttonRow: {
       flex: 1,
