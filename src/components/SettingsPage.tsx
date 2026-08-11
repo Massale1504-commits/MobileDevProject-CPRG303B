@@ -1,9 +1,17 @@
-import { useMemo, useState, type ReactNode } from "react";
-import { Alert, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
 import { RADIUS, SPACING, TYPOGRAPHY, type AppColors } from "@/constants/theme";
 import { useTheme } from "@/context/ThemeContext";
 import { useTransactions } from "@/context/TransactionsContext";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useMemo, useState, type ReactNode } from "react";
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 interface Row {
   key: string;
@@ -41,7 +49,14 @@ export default function SettingsPage() {
 
   const handleBackup = () => {
     const now = new Date();
-    setLastBackup(now.toLocaleString("en-US", { hour: "numeric", minute: "2-digit", month: "short", day: "numeric" }));
+    setLastBackup(
+      now.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        month: "short",
+        day: "numeric",
+      }),
+    );
   };
 
   const handleClearData = () => {
@@ -52,7 +67,7 @@ export default function SettingsPage() {
       [
         { text: "Cancel", style: "cancel" },
         { text: "Clear Data", style: "destructive", onPress: clearAll },
-      ]
+      ],
     );
   };
 
@@ -95,7 +110,11 @@ export default function SettingsPage() {
           <View key={item.key}>
             <View style={styles.row}>
               <View style={styles.iconWrap}>
-                <MaterialIcons name={item.icon} size={20} color={item.iconColor ?? colors.primary} />
+                <MaterialIcons
+                  name={item.icon}
+                  size={20}
+                  color={item.iconColor ?? colors.primary}
+                />
               </View>
               <View style={styles.rowInfo}>
                 <Text style={styles.rowTitle}>{item.title}</Text>
@@ -117,7 +136,10 @@ export default function SettingsPage() {
           <Switch
             value={isDark}
             onValueChange={toggleDark}
-            trackColor={{ false: colors.surfaceContainerHigh, true: colors.primary }}
+            trackColor={{
+              false: colors.surfaceContainerHigh,
+              true: colors.primary,
+            }}
             thumbColor={colors.surfaceContainerLowest}
           />
         </View>
@@ -136,19 +158,34 @@ export default function SettingsPage() {
               {lastBackup ? `Last backup: ${lastBackup}` : "Never backed up"}
             </Text>
           </View>
-          <TouchableOpacity style={styles.backupButton} activeOpacity={0.8} onPress={handleBackup}>
+          <TouchableOpacity
+            style={styles.backupButton}
+            activeOpacity={0.8}
+            onPress={handleBackup}
+          >
             <Text style={styles.backupButtonText}>BACKUP</Text>
           </TouchableOpacity>
         </View>
         <Divider />
-        <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={handleClearData}>
+        <TouchableOpacity
+          style={styles.row}
+          activeOpacity={0.7}
+          onPress={handleClearData}
+        >
           <View style={[styles.iconWrap, styles.iconWrapError]}>
-            <MaterialIcons name="delete-forever" size={20} color={colors.error} />
+            <MaterialIcons
+              name="delete-forever"
+              size={20}
+              color={colors.error}
+            />
           </View>
           <View style={styles.rowInfo}>
-            <Text style={[styles.rowTitle, { color: colors.error }]}>Clear All Data</Text>
+            <Text style={[styles.rowTitle, { color: colors.error }]}>
+              Clear All Data
+            </Text>
             <Text style={styles.rowSubtitle}>
-              {transactions.length} transaction{transactions.length === 1 ? "" : "s"} stored · permanent action
+              {transactions.length} transaction
+              {transactions.length === 1 ? "" : "s"} stored · permanent action
             </Text>
           </View>
         </TouchableOpacity>
@@ -169,8 +206,8 @@ export default function SettingsPage() {
             <Text style={styles.rowTitle}>Developed by</Text>
             <Text style={styles.rowSubtitle}>HBE Team © 2024</Text>
             <Text style={styles.aboutBody}>
-              CalQ is built to provide maximum financial clarity through high-precision
-              calculations and robust local data storage.
+              CalQ is built to provide maximum financial clarity through
+              high-precision calculations and robust local data storage.
             </Text>
           </View>
         </View>
