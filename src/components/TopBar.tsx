@@ -1,9 +1,20 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function TopBar() {
+type TopBarProps = {
+  title?: string;
+  icon?: keyof typeof MaterialIcons.glyphMap;
+};
+
+export default function TopBar({ title = "CalQ", icon }: TopBarProps) {
   return (
     <View style={styles.header}>
-      <Text style={styles.TextHeader}>CalQ</Text>
+      <View style={styles.titleRow}>
+        {icon ? (
+          <MaterialIcons name={icon} size={24} color="#0871ce" />
+        ) : null}
+        <Text style={styles.TextHeader}>{title}</Text>
+      </View>
     </View>
   );
 }
@@ -23,6 +34,12 @@ const styles = StyleSheet.create({
 
     borderBottomWidth: 1,
     borderBottomColor: "#eeeeee",
+  },
+
+  titleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
   },
 
   TextHeader: {

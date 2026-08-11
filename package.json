@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "dependencies": {
     "@expo/ui": "~57.0.10",
+<<<<<<< HEAD
+=======
+    "@expo/vector-icons": "^15.0.2",
+>>>>>>> 431cb9b (Initial commit)
     "expo": "~57.0.12",
     "expo-constants": "~57.0.10",
     "expo-device": "~57.0.1",
@@ -24,10 +28,18 @@
     "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
+<<<<<<< HEAD
+=======
+    "react-native-svg": "15.15.4",
+>>>>>>> 431cb9b (Initial commit)
     "react-native-web": "~0.21.0",
     "react-native-worklets": "0.10.1"
   },
   "devDependencies": {
+<<<<<<< HEAD
+=======
+    "@react-navigation/bottom-tabs": "^7.18.16",
+>>>>>>> 431cb9b (Initial commit)
     "@types/react": "~19.2.2",
     "typescript": "~6.0.3"
   },
