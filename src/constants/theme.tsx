@@ -38,9 +38,9 @@ export const LIGHT_COLORS = {
   background: "#f8f9fa",
   onBackground: "#191c1d",
   surfaceVariant: "#e1e3e4",
-} 
+};
 
-// Dark variant of the same token set same semantic slots, so any
+// Dark variant of the same token set - same semantic slots, so any
 // component that reads COLORS.primary / COLORS.background etc. works
 // unchanged regardless of which palette is active.
 export const DARK_COLORS: typeof LIGHT_COLORS = {
@@ -109,7 +109,7 @@ export const RADIUS = {
 } as const;
 
 // Maps to the `typography` block in DESIGN.md. Requires Inter + JetBrains
-// Mono to be loaded once in the root layout (see app/_layout.tsx) if
+// Mono to be loaded once in the root layout (see app/_layout.tsx) - if
 // fonts haven't loaded yet, these fontFamily names just fall back to the
 // platform default, so nothing breaks if you skip that step.
 export const TYPOGRAPHY = {

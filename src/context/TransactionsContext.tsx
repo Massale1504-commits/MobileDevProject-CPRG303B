@@ -13,7 +13,7 @@ export interface Transaction {
   icon: keyof typeof MaterialIcons.glyphMap;
 }
 
-// What you pass in to add a transaction id/date/status are filled in
+// What you pass in to add a transaction - id/date/status are filled in
 // automatically if you don't supply them.
 export type NewTransaction = Partial<Pick<Transaction, "id" | "date" | "status">> &
   Pick<Transaction, "title" | "category" | "amount" | "icon">;

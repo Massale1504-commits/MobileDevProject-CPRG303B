@@ -8,12 +8,12 @@ import { Stack } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-// Renamed from the original `TabLayout`  this file is now the app-wide
+// Renamed from the original `TabLayout` - this file is now the app-wide
 // root layout; the actual tab navigator lives in app/(tabs)/_layout.tsx.
 export default function RootLayout() {
   const fontsLoaded = true;
 
-  // Keep this brief it only shows for the first frame or two while the
+  // Keep this brief - it only shows for the first frame or two while the
   // Google Fonts are loaded from cache/bundle. Uses the static light
   // palette since ThemeProvider hasn't mounted yet at this point.
   if (!fontsLoaded) {
